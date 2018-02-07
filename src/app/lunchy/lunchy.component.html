@@ -1,7 +1,13 @@
 <div>
     <mat-toolbar color="primary">
-        <h1 class="example-app-name">Lunchy McLunchface</h1>
+        <h1>Lunchy McLunchface</h1>
     </mat-toolbar>
-    <app-lunch-places [places]="places"></app-lunch-places>
-    <app-lunch-item-list [lunchItems]="items"></app-lunch-item-list>
+    <mat-sidenav-container>
+        <mat-sidenav [opened]=true [mode]="'side'">
+            <app-lunch-places [places]="places" (change)="fetchLunchItems($event)"></app-lunch-places>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <app-lunch-item-list [lunchItems]="items"></app-lunch-item-list>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>

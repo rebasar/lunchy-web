@@ -1,5 +1,10 @@
-<div>
+<div *ngIf="lunchItems">
   <div *ngFor="let lunchItem of lunchItems">
     <app-lunch-item [item]="lunchItem"></app-lunch-item>
   </div>
+</div>
+<div *ngIf="!lunchItems">
+<h2>Hello Stranger!</h2>
+<p>Why don't you start by selecting a nice lunch place from the left menu?</p>
+<p>I'im sure you will be able to find something for your taste!</p>
 </div>

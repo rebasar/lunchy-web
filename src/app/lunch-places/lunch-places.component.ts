@@ -16,4 +16,8 @@ export class LunchPlacesComponent implements OnInit {
   ngOnInit() {
   }
 
+  changePlace(place: LunchPlace): void {
+    this.change.emit(place);
+  }
+
 }
