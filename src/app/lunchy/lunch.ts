@@ -6,6 +6,6 @@ export class Lunch {
 
 export class LunchItem {
     title: string;
-    descsription: string;
+    description: string;
     price: number;
 }

@@ -17,13 +17,13 @@ const PLACES: LunchPlace[] = [
   }];
 
 const BARRAN: LunchItem[] = [
-  { title: 'Wallenbergare', descsription: 'Yummy!', price: 115 },
-  { title: 'Beef Chuck', descsription: 'Chuckity chuck chuck', price: 115 }
+  { title: 'Wallenbergare', description: 'Yummy!', price: 115 },
+  { title: 'Beef Chuck', description: 'Chuckity chuck chuck', price: 115 }
 ];
 
 const TACOS: LunchItem[] = [
-  { title: 'Wallenbergare 2', descsription: 'Yummy!', price: 115 },
-  { title: 'Beef Chuck 2', descsription: 'Chuckity chuck chuck', price: 115 }
+  { title: 'Wallenbergare 2', description: 'Yummy!', price: 115 },
+  { title: 'Beef Chuck 2', description: 'Chuckity chuck chuck', price: 115 }
 ];
 
 @Injectable()
