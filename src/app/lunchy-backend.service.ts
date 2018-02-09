@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { LunchPlace } from './lunchy/lunch_place';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
-import { LunchItem } from './lunchy/lunch';
+import { LunchItem, Lunch } from './lunchy/lunch';
+import { HttpClient } from '@angular/common/http';
 
 const PLACES: LunchPlace[] = [
   {
@@ -29,18 +30,14 @@ const TACOS: LunchItem[] = [
 @Injectable()
 export class LunchyBackendService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   fetchLunchPlaces(): Observable<LunchPlace[]> {
-    return of(PLACES);
+    return this.httpClient.get<LunchPlace[]>('https://lunchy.nu/lunch');
   }
 
-  fetchLunchItems(place: LunchPlace): Observable<LunchItem[]> {
-    if (place.name === 'Barabicu') {
-      return of(BARRAN);
-    } else {
-      return of(TACOS);
-    }
+  fetchLunchItems(place: LunchPlace): Observable<Lunch> {
+    return this.httpClient.get<Lunch>(place.uri);
   }
 
 }

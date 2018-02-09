@@ -17,6 +17,7 @@ import { LunchItemListComponent } from './lunch-item-list/lunch-item-list.compon
 import { LunchItemComponent } from './lunch-item/lunch-item.component';
 import { LunchPlacesComponent } from './lunch-places/lunch-places.component';
 import { LunchyBackendService } from './lunchy-backend.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { LunchyBackendService } from './lunchy-backend.service';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
   ],
   providers: [LunchyBackendService],
   bootstrap: [AppComponent]

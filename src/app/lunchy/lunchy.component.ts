@@ -25,7 +25,7 @@ export class LunchyComponent implements OnInit {
   }
 
   fetchLunchItems(place: LunchPlace): void {
-    this.lunchyBackendService.fetchLunchItems(place).subscribe(items => this.items = items);
+    this.lunchyBackendService.fetchLunchItems(place).subscribe(lunch => this.items = lunch.items);
   }
 
 }
