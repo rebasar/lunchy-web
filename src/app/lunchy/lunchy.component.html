@@ -1,9 +1,12 @@
 <div>
     <mat-toolbar color="primary">
+        <a (click)="nav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </a>
         <h1>Lunchy McLunchface</h1>
     </mat-toolbar>
     <mat-sidenav-container>
-        <mat-sidenav [opened]=true [mode]="'side'">
+        <mat-sidenav #nav [opened]=true [mode]="'side'">
             <app-lunch-places [places]="places" (change)="fetchLunchItems($event)"></app-lunch-places>
         </mat-sidenav>
         <mat-sidenav-content>
