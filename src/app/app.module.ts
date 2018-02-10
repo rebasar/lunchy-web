@@ -8,7 +8,8 @@ import { MatList,
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatButtonModule} from '@angular/material';
+  MatButtonModule,
+  MatChipsModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    MatChipsModule,
     HttpClientModule
   ],
   providers: [LunchyBackendService],
