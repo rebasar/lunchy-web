@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { LunchPlace } from './lunchy/lunch_place';
+import { LunchRef } from './lunchy/lunch_ref';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
+import { catchError, map } from 'rxjs/operators';
 import { LunchItem, Lunch } from './lunchy/lunch';
 import { HttpClient } from '@angular/common/http';
 
@@ -14,8 +16,19 @@ export class LunchyBackendService {
     return this.httpClient.get<LunchPlace[]>('https://lunchy.nu/lunch');
   }
 
-  fetchLunchItems(place: LunchPlace): Observable<Lunch> {
-    return this.httpClient.get<Lunch>(place.uri);
+  fetchLunchItems(place: LunchPlace): Observable<LunchRef> {
+    return this
+      .httpClient
+      .get<Lunch>(place.uri)
+      .pipe(map((lunch: Lunch) => LunchRef.success(lunch)))
+      .pipe(catchError(this.handleError('fetchLunchItems', LunchRef.error())));
+  }
+
+  private handleError<T>(operation = 'op', result?: T) {
+    return (error: any): Observable<T> => {
+      console.log(operation + ' failed');
+      return of(result);
+    };
   }
 
 }

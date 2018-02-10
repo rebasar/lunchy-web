@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { LunchPlace } from './lunch_place';
 import { LunchItem } from './lunch';
 import { LunchyBackendService } from '../lunchy-backend.service';
+import { LunchRef } from './lunch_ref';
 
 @Component({
   selector: 'app-lunchy',
@@ -12,7 +13,8 @@ import { LunchyBackendService } from '../lunchy-backend.service';
 export class LunchyComponent implements OnInit {
 
   places: LunchPlace[] = [];
-  items: LunchItem[];
+  selectedPlace?: LunchPlace;
+  lunch: LunchRef = LunchRef.notLoaded();
 
   constructor(private lunchyBackendService: LunchyBackendService) { }
 
@@ -24,8 +26,13 @@ export class LunchyComponent implements OnInit {
     this.lunchyBackendService.fetchLunchPlaces().subscribe(places => this.places = places);
   }
 
+  changeSelectedPlace(place: LunchPlace): void {
+    this.selectedPlace = place;
+    this.fetchLunchItems(place);
+  }
+
   fetchLunchItems(place: LunchPlace): void {
-    this.lunchyBackendService.fetchLunchItems(place).subscribe(lunch => this.items = lunch.items);
+    this.lunchyBackendService.fetchLunchItems(place).subscribe(lunch => this.lunch = lunch);
   }
 
 }

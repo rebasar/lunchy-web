@@ -7,10 +7,21 @@
     </mat-toolbar>
     <mat-sidenav-container>
         <mat-sidenav #nav [opened]=true [mode]="'side'">
-            <app-lunch-places [places]="places" (change)="fetchLunchItems($event)"></app-lunch-places>
+            <app-lunch-places [places]="places" (change)="changeSelectedPlace($event)"></app-lunch-places>
         </mat-sidenav>
         <mat-sidenav-content>
-            <app-lunch-item-list [lunchItems]="items"></app-lunch-item-list>
+            <app-lunch-item-list *ngIf="lunch.isSuccess()" [lunchItems]="lunch.lunch.items"></app-lunch-item-list>
+            <div *ngIf="lunch.isNotLoaded()">
+                <h2>Hello Stranger!</h2>
+                <p>Why don't you start by selecting a nice lunch place from the left menu?</p>
+                <p>I'im sure you will be able to find something for your taste!</p>
+            </div>
+            <div *ngIf="lunch.isError()">
+                <h2>Well this sucks!</h2>
+                <p>Looks like some guru meditation is required. Sorry for that.</p>
+                <p *ngIf="selectedPlace">In the meantime, would you like to
+                    <a href="{{ selectedPlace.website }}" target="_blank">check</a> the website of {{ selectedPlace.name }} instead?</p>
+            </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>
