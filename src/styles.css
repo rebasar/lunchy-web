@@ -3,5 +3,8 @@
 body { 
     font-family: Roboto, Arial, sans-serif;
     margin: 0;
-    background: rgb(48, 48, 48);
+}
+
+mat-toolbar {
+    justify-content: space-between;
 }
