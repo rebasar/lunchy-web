@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatList,
+import {
+  MatList,
   MatListItem,
   MatListModule,
   MatSidenavModule,
@@ -10,7 +11,8 @@ import { MatList,
   MatCardModule,
   MatButtonModule,
   MatChipsModule,
-  MatProgressSpinnerModule} from '@angular/material';
+  MatProgressSpinnerModule
+} from '@angular/material';
 
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
@@ -21,14 +23,19 @@ import { LunchItemListComponent } from './lunch-item-list/lunch-item-list.compon
 import { LunchItemComponent } from './lunch-item/lunch-item.component';
 import { LunchPlacesComponent } from './lunch-places/lunch-places.component';
 import { LunchyBackendService } from './lunchy-backend.service';
+import { config } from './config';
 import { HttpClientModule } from '@angular/common/http';
 
-const config = new AuthServiceConfig([
+const authConfig = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('Not telling you :)')
+    provider: new GoogleLoginProvider(config.googleClientId)
   }
 ]);
+
+export function provideConfig() {
+  return authConfig;
+}
 
 @NgModule({
   declarations: [
@@ -50,9 +57,13 @@ const config = new AuthServiceConfig([
     MatChipsModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    SocialLoginModule.initialize(config)
+    SocialLoginModule
   ],
-  providers: [LunchyBackendService],
+  providers: [LunchyBackendService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
