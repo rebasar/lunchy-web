@@ -16,3 +16,8 @@ html, body, .mat-drawer-container {
 mat-card {
     margin: 1em;
 }
+
+h1.lunch-place-title {
+    display: flex;
+    justify-content: center;
+}
