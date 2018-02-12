@@ -8,6 +8,7 @@ import { LunchPlace } from '../lunchy/lunch_place';
 })
 export class LunchPlacesComponent implements OnInit {
 
+  selected?: LunchPlace;
   @Input() places: LunchPlace[] = [];
   @Output() change: EventEmitter<LunchPlace> = new EventEmitter();
 
@@ -17,7 +18,12 @@ export class LunchPlacesComponent implements OnInit {
   }
 
   changePlace(place: LunchPlace): void {
+    this.selected = place;
     this.change.emit(place);
+  }
+
+  isCurrent(place: LunchPlace): boolean {
+    return this.selected && this.selected.name === place.name;
   }
 
 }

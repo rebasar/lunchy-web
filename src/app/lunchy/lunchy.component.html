@@ -10,6 +10,7 @@
         <app-lunch-places [places]="places" (change)="changeSelectedPlace($event)"></app-lunch-places>
     </mat-sidenav>
     <mat-sidenav-content>
+        <h1 *ngIf="selectedPlace">{{ selectedPlace.name }}</h1>
         <app-lunch-item-list *ngIf="lunch.isSuccess()" [lunchItems]="lunch.lunch.items"></app-lunch-item-list>
         <div *ngIf="lunch.isNotLoaded()">
             <h2>Hello Stranger!</h2>
