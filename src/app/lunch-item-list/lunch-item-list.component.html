@@ -1,7 +1,5 @@
-<div *ngIf="lunchItems">
-  <div *ngFor="let lunchItem of lunchItems">
-    <app-lunch-item [item]="lunchItem"></app-lunch-item>
-  </div>
+<div *ngFor="let lunchItem of lunchItems">
+  <app-lunch-item [item]="lunchItem"></app-lunch-item>
 </div>
 <div *ngIf="!lunchItems">
   Hmm, it looks like there is no lunch menu for today. Maybe try somewhere else?

@@ -8,3 +8,7 @@ body {
 mat-toolbar {
     justify-content: space-between;
 }
+
+html, body, .mat-drawer-container {
+    height: 100%;
+}
