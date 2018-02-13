@@ -11,7 +11,8 @@ import {
   MatCardModule,
   MatButtonModule,
   MatChipsModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
@@ -25,6 +26,7 @@ import { LunchPlacesComponent } from './lunch-places/lunch-places.component';
 import { LunchyBackendService } from './lunchy-backend.service';
 import { config } from './config';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from './authentication.service';
 
 const authConfig = new AuthServiceConfig([
   {
@@ -55,11 +57,13 @@ export function provideConfig() {
     MatCardModule,
     MatButtonModule,
     MatChipsModule,
+    MatMenuModule,
     MatProgressSpinnerModule,
     HttpClientModule,
     SocialLoginModule
   ],
   providers: [LunchyBackendService,
+    AuthenticationService,
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig

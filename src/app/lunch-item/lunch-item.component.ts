@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LunchItem } from '../lunchy/lunch';
+import { AuthenticationService, AuthenticationAction } from '../authentication.service';
 
 enum Sentiment {
   GOOD,
@@ -45,8 +46,14 @@ export class LunchItemComponent implements OnInit {
 
   @Input() item: LunchItem;
   sentiment: SentimentState = new SentimentState();
+  loggedIn: boolean;
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) {
+    this.loggedIn = authenticationService.isLoggedIn();
+    authenticationService
+      .userState
+      .subscribe((authenticationAction: AuthenticationAction) => this.loggedIn = authenticationAction.isLogin());
+  }
 
   ngOnInit() {
   }
