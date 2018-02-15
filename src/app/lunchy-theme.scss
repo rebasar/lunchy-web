@@ -5,3 +5,8 @@ $lunchy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
 $lunchy-app-warn:    mat-palette($mat-red);
 $lunchy-app-theme: mat-dark-theme($lunchy-app-primary, $lunchy-app-accent, $lunchy-app-warn);
 @include angular-material-theme($lunchy-app-theme);
+
+a {
+    color: mat-color($lunchy-app-accent);
+    text-decoration: none;
+  }

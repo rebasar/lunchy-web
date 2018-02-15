@@ -1,30 +1,34 @@
 <mat-toolbar color="primary">
-    <a (click)="nav.toggle()">
+    <button mat-icon-button (click)="nav.toggle()">
         <mat-icon>menu</mat-icon>
-    </a>
+    </button>
     <h1>Lunchy McLunchface</h1>
-    <button *ngIf="!loggedIn" mat-raised-button [color]="'primary'" (click)="signInWithGoogle()">Sign In</button>
+    <button *ngIf="!loggedIn" mat-button (click)="signInWithGoogle()">Sign In</button>
     <button *ngIf="loggedIn" mat-icon-button [color]="'primary'" (click)="signOut()">
-        <img width="32" height="32" mat-card-avatar src="{{ user.photoUrl }}"/>
+        <img width="32" height="32" mat-card-avatar src="{{ user.photoUrl }}" />
     </button>
 </mat-toolbar>
-<mat-sidenav-container>
+<mat-sidenav-container [autosize]=true>
     <mat-sidenav #nav [opened]=true [mode]="'side'">
         <app-lunch-places [places]="places" (change)="changeSelectedPlace($event)"></app-lunch-places>
     </mat-sidenav>
     <mat-sidenav-content>
         <h1 class="lunch-place-title" *ngIf="selectedPlace">{{ selectedPlace.name }}</h1>
         <app-lunch-item-list *ngIf="lunch.isSuccess()" [lunchItems]="lunch.lunch.items"></app-lunch-item-list>
-        <div *ngIf="lunch.isNotLoaded()">
-            <h2>Hello Stranger!</h2>
-            <p>Why don't you start by selecting a nice lunch place from the left menu?</p>
-            <p>I'im sure you will be able to find something for your taste!</p>
-        </div>
-        <div *ngIf="lunch.isError()">
-            <h2>Well this sucks!</h2>
-            <p>Looks like some guru meditation is required. Sorry for that.</p>
-            <p *ngIf="selectedPlace">In the meantime, would you like to
-                <a href="{{ selectedPlace.website }}" target="_blank">check</a> the website of {{ selectedPlace.name }} instead?</p>
-        </div>
+        <mat-card *ngIf="lunch.isNotLoaded()">
+            <mat-card-title>Hello Stranger!</mat-card-title>
+            <mat-card-content>
+                <p>Why don't you start by selecting a nice lunch place from the left menu?</p>
+                <p>I'im sure you will be able to find something for your taste!</p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="lunch.isError()">
+            <mat-card-title>Well this sucks!</mat-card-title>
+            <mat-card-content>
+                <p>Looks like some guru meditation is required. Sorry for that.</p>
+                <p *ngIf="selectedPlace">In the meantime, would you like to
+                    <a class="md-accent" href="{{ selectedPlace.website }}" target="_blank">check</a> the website of {{ selectedPlace.name }} instead?</p>
+            </mat-card-content>
+        </mat-card>
     </mat-sidenav-content>
 </mat-sidenav-container>
