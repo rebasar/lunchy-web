@@ -2,9 +2,7 @@
   <mat-card-title>{{ item.title }}</mat-card-title>
   <mat-card-content>{{ item.description }}</mat-card-content>
   <mat-card-actions>
-    <button mat-icon-button [disabled]="!loggedIn" (click)="like()" [color]="sentiment.isGood() ? 'accent' : 'white'"><mat-icon>sentiment_very_satisfied</mat-icon></button>
-    <button mat-icon-button [disabled]="!loggedIn" (click)="neutral()" [color]="sentiment.isNeutral() ? 'accent' : 'white'"><mat-icon>sentiment_neutral</mat-icon></button>
-    <button mat-icon-button [disabled]="!loggedIn" (click)="bad()" [color]="sentiment.isBad() ? 'accent' : 'white'"><mat-icon>sentiment_very_dissatisfied</mat-icon></button>
+    <app-ratings [disabled]="!loggedIn" [item]="item"></app-ratings>
   </mat-card-actions>
   <mat-card-footer>
     <mat-chip-list *ngIf="item.price">

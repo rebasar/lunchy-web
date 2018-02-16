@@ -1,0 +1,9 @@
+<button mat-icon-button [disabled]="disabled" (click)="sentiment.like()" [color]="sentiment.isGood() ? 'accent' : 'white'">
+  <mat-icon>sentiment_very_satisfied</mat-icon>
+</button>
+<button mat-icon-button [disabled]="disabled" (click)="sentiment.neutral()" [color]="sentiment.isNeutral() ? 'accent' : 'white'">
+  <mat-icon>sentiment_neutral</mat-icon>
+</button>
+<button mat-icon-button [disabled]="disabled" (click)="sentiment.bad()" [color]="sentiment.isBad() ? 'accent' : 'white'">
+  <mat-icon>sentiment_very_dissatisfied</mat-icon>
+</button>

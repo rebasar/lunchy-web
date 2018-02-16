@@ -28,6 +28,7 @@ import { config } from './config';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { RatingsComponent } from './ratings/ratings.component';
 
 const authConfig = new AuthServiceConfig([
   {
@@ -46,7 +47,8 @@ export function provideConfig() {
     LunchyComponent,
     LunchItemListComponent,
     LunchItemComponent,
-    LunchPlacesComponent
+    LunchPlacesComponent,
+    RatingsComponent
   ],
   imports: [
     BrowserModule,
