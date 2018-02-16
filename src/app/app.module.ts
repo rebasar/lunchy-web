@@ -27,6 +27,7 @@ import { LunchyBackendService } from './lunchy-backend.service';
 import { config } from './config';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 const authConfig = new AuthServiceConfig([
   {
@@ -63,6 +64,7 @@ export function provideConfig() {
     SocialLoginModule
   ],
   providers: [LunchyBackendService,
+    MediaMatcher,
     AuthenticationService,
     {
       provide: AuthServiceConfig,

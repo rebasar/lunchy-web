@@ -9,8 +9,8 @@
     </button>
 </mat-toolbar>
 <mat-sidenav-container [autosize]=true>
-    <mat-sidenav #nav [opened]=true [mode]="'side'">
-        <app-lunch-places [places]="places" (change)="changeSelectedPlace($event)"></app-lunch-places>
+    <mat-sidenav #nav [opened]=true [mode]="mobileQuery.matches ? 'over' : 'side'">
+        <app-lunch-places [places]="places" (change)="changeSelectedPlace($event);"></app-lunch-places>
     </mat-sidenav>
     <mat-sidenav-content>
         <h1 class="lunch-place-title" *ngIf="selectedPlace">{{ selectedPlace.name }}</h1>
