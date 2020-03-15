@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/lunchy-web:v0.0.0
+    - name: Login to the Docker repository
+      run: docker login --username rebasar --password ${{ secrets.GITHUB_TOKEN }}
+    - name: Push the docker image to GitHub registry
+      run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/lunchy-web:v0.0.0
