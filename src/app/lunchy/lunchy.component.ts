@@ -24,7 +24,7 @@ export class LunchyComponent implements OnInit, OnDestroy {
   places: LunchPlace[] = [];
   selectedPlace?: LunchPlace;
   lunch: LunchRef = LunchRef.notLoaded();
-  @ViewChild('nav') nav: MatSidenav;
+  @ViewChild('nav', { static: true }) nav: MatSidenav;
 
   constructor(private lunchyBackendService: LunchyBackendService,
     private authService: AuthService,

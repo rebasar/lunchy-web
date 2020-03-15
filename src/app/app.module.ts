@@ -4,16 +4,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatList,
   MatListItem,
-  MatListModule,
-  MatSidenavModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatCardModule,
-  MatButtonModule,
-  MatChipsModule,
-  MatProgressSpinnerModule,
-  MatMenuModule
-} from '@angular/material';
+  MatListModule
+} from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { RatingsComponent } from './ratings/ratings.component';
+import { from } from 'rxjs';
 
 const authConfig = new AuthServiceConfig([
   {
