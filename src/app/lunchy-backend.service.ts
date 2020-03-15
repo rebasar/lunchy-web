@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { LunchPlace } from './lunchy/lunch_place';
 import { LunchRef } from './lunchy/lunch_ref';
-import { of } from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { LunchItem, Lunch } from './lunchy/lunch';
 import { HttpClient } from '@angular/common/http';

@@ -7,7 +7,7 @@ import { LunchyBackendService } from '../lunchy-backend.service';
 import { LunchRef } from './lunch_ref';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({

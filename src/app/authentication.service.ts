@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SocialUser, AuthService } from 'angularx-social-login';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
 export class AuthenticationAction {
