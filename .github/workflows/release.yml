@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/lunchy-web:v0.0.0
+      run: docker build . --file Dockerfile --tag ${{ secrets.RELEASE_USERNAME }}/lunchy-web:v0.0.0
     - name: Login to the Docker repository
-      run: docker login --username rebasar --password ${{ secrets.GITHUB_TOKEN }} docker.pkg.github.com
+      run: docker login --username ${{ secrets.RELEASE_USERNAME }} --password ${{ secrets.RELEASE_KEY }}
     - name: Push the docker image to GitHub registry
-      run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/lunchy-web:v0.0.0
+      run: docker push ${{ secrets.RELEASE_USERNAME }}/lunchy-web:v0.0.0
