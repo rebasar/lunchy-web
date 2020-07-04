@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SocialUser, AuthService } from 'angularx-social-login';
+import { SocialUser, SocialAuthService } from 'angularx-social-login';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
@@ -34,7 +34,7 @@ export class AuthenticationService {
   currentAction: AuthenticationAction = AuthenticationAction.logout();
   userState: BehaviorSubject<AuthenticationAction> = new BehaviorSubject<AuthenticationAction>(this.currentAction);
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: SocialAuthService) {
     authService.authState.subscribe((user: SocialUser) => {
       this.userState.next(user === null ? AuthenticationAction.logout() : AuthenticationAction.login(user));
     });

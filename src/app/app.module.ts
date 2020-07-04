@@ -15,7 +15,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 
 import { AppComponent } from './app.component';
@@ -31,16 +31,13 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { RatingsComponent } from './ratings/ratings.component';
 import { from } from 'rxjs';
 
-const authConfig = new AuthServiceConfig([
+const authConfig: SocialAuthServiceConfig = {
+  autologin: false,
+  providers: [
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider(config.googleClientId)
-  }
-]);
-
-export function provideConfig() {
-  return authConfig;
-}
+  }]} as SocialAuthServiceConfig;
 
 @NgModule({
   declarations: [
@@ -70,8 +67,8 @@ export function provideConfig() {
     MediaMatcher,
     AuthenticationService,
     {
-      provide: AuthServiceConfig,
-      useFactory: provideConfig
+      provide: 'SocialAuthServiceConfig',
+      useValue: authConfig
     }],
   bootstrap: [AppComponent]
 })
