@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy, ViewChild } from '@angular/core';
-import { AuthService } from 'angularx-social-login';
+import { SocialAuthService } from 'angularx-social-login';
 
 import { LunchPlace } from './lunch_place';
 import { LunchItem } from './lunch';
@@ -27,7 +27,7 @@ export class LunchyComponent implements OnInit, OnDestroy {
   @ViewChild('nav', { static: true }) nav: MatSidenav;
 
   constructor(private lunchyBackendService: LunchyBackendService,
-    private authService: AuthService,
+    private authService: SocialAuthService,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
